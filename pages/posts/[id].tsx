@@ -1,6 +1,7 @@
 import type { GetStaticPropsContext, GetStaticPropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import React from "react";
 
 import type { Post as IPost } from "../../data";
 import { getPost } from "../../data";
