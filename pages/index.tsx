@@ -1,8 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -15,29 +16,34 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a> in <a href="https://docs.github.com/en/codespaces"></a>
+          Welcome to <a href="https://nextjs.org">Next.js!</a> in{" "}
+          <a href="https://docs.github.com/en/codespaces">Codespaces</a>
         </h1>
 
         <section className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </section>
 
         <div className={styles.grid}>
           <Link href="/posts" passHref>
-            <section className={styles.card}>
-              <h2>Posts</h2>
+            <a className={styles.card}>
+              <h2>Posts &rarr;</h2>
               <section>A collection of posts from JSON Placeholder.</section>
-            </section>
+            </a>
           </Link>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
-            <section>Find in-depth information about Next.js features and API.</section>
+            <section>
+              Find in-depth information about Next.js features and API.
+            </section>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
             <h2>Learn &rarr;</h2>
-            <section>Learn about Next.js in an interactive course with quizzes!</section>
+            <section>
+              Learn about Next.js in an interactive course with quizzes!
+            </section>
           </a>
 
           <a
@@ -45,7 +51,9 @@ export default function Home() {
             className={styles.card}
           >
             <h2>Examples &rarr;</h2>
-            <section>Discover and deploy boilerplate example Next.js projects.</section>
+            <section>
+              Discover and deploy boilerplate example Next.js projects.
+            </section>
           </a>
 
           <a
@@ -66,12 +74,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }

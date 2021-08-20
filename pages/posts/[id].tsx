@@ -1,25 +1,30 @@
-import type { GetStaticPropsContext, GetStaticPropsResult } from 'next';
-import type { Post as IPost } from '../../data';
-import { getPost } from '../../data';
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
-import { Post } from '../../components/Post';
+import type { GetStaticPropsContext, GetStaticPropsResult } from "next";
+import Head from "next/head";
+import Image from "next/image";
+
+import type { Post as IPost } from "../../data";
+import { getPost } from "../../data";
+import styles from "../../styles/Home.module.css";
 
 interface PostProps {
-  post: IPost
+  post: IPost;
 }
 
-export async function getServerSideProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<PostProps>>  {
-  const givenId = Array.isArray(context.params.id) ? context.params.id.pop() : context.params.id;
-  const postId = parseInt(givenId, 10);
-  const post = await getPost(postId);
+export async function getServerSideProps(
+  context: GetStaticPropsContext
+): Promise<GetStaticPropsResult<PostProps>> {
+  if (typeof context.params?.id !== 'string') {
+    throw new Error('A single post id is must be given')
+  }
+  const postId = parseInt(context.params?.id, 10);
   
+  const post = await getPost(postId);
+
   return {
     props: {
-      post
+      post,
     }, // will be passed to the page component as props
-  }  
+  };
 }
 
 export default function PostPage(props: PostProps) {
@@ -33,14 +38,9 @@ export default function PostPage(props: PostProps) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          {post.title}
-        </h1>
+        <h1 className={styles.title}>{post.title}</h1>
 
-        <section className={styles.description}>
-          {post.body}
-        </section>
-
+        <section className={styles.description}>{post.body}</section>
       </main>
 
       <footer className={styles.footer}>
@@ -49,14 +49,12 @@ export default function PostPage(props: PostProps) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
-
-
