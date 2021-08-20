@@ -1,4 +1,4 @@
-import type { GetStaticPropsContext, GetStaticPropsResult } from "next";
+import type { /* GetStaticPropsContext, */ GetStaticPropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,9 +14,8 @@ interface PostsProps {
 type PostPropsResult = GetStaticPropsResult<PostsProps>;
 
 export async function getServerSideProps(
-  context: GetStaticPropsContext
+  // context: GetStaticPropsContext
 ): Promise<PostPropsResult> {
-  console.log(context);
   const posts = await getPosts();
 
   return {
