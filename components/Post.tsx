@@ -7,10 +7,10 @@ import "../styles/Home.module.css";
 export function Post(post: IPost) {
   return (
     <Link key={post.id} href={`/posts/${post.id}`} passHref>
-      <React.Fragment>
+      <a>
         <h2>{post.title}</h2>
         <p>{post.body}</p>
-      </React.Fragment>
+      </a>
     </Link>
   );
 }
