@@ -24,11 +24,11 @@ export default function Home() {
         </section>
 
         <div className={styles.grid}>
-          <Link href="/posts" className={styles.card} passHref>
-            <React.Fragment>
+          <Link href="/posts" passHref>
+            <section className={styles.card}>
               <h2>Posts</h2>
               <section>A collection of posts from JSON Placeholder.</section>
-            </React.Fragment>
+            </section>
           </Link>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
