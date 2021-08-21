@@ -25,7 +25,6 @@ export async function getServerSideProps(
     props: {
       post,
     }, // will be passed to the page component as props
-    revalidate: false
   };
 }
 
