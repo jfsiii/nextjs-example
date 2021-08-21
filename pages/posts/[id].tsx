@@ -12,15 +12,14 @@ interface PostProps {
 }
 
 export async function getServerSideProps(
-  context: GetStaticPropsContext
+  {res, params}: GetStaticPropsContext
 ): Promise<GetServerSidePropsResult<PostProps>> {
-  if (typeof context.params?.id !== 'string') {
+  if (typeof params?.id !== 'string') {
     throw new Error('A single post id is must be given')
   }
-  const postId = parseInt(context.params?.id, 10);
-
+  const postId = parseInt(params?.id, 10);
   const post = await getPost(postId);
-
+  res.setHeader('Cache-Control', 's-maxage=59, stale-while-revalidate=599')
   return {
     props: {
       post,
