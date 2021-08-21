@@ -13,9 +13,8 @@ interface PostsProps {
 }
 type PostPropsResult = GetStaticPropsResult<PostsProps>;
 
-export async function getServerSideProps(
-  // context: GetStaticPropsContext
-): Promise<PostPropsResult> {
+export async function getServerSideProps(): Promise<PostPropsResult> {
+// context: GetStaticPropsContext
   const posts = await getPosts();
 
   return {

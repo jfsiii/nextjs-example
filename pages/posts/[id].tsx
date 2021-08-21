@@ -1,4 +1,4 @@
-import type { GetStaticPropsContext, GetServerSidePropsResult } from "next";
+import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
@@ -12,14 +12,15 @@ interface PostProps {
 }
 
 export async function getServerSideProps(
-  {res, params}: GetStaticPropsContext
+  context: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<PostProps>> {
-  if (typeof params?.id !== 'string') {
-    throw new Error('A single post id is must be given')
+  const { res, params } = context;
+  if (typeof params?.id !== "string") {
+    throw new Error("A single post id is must be given");
   }
   const postId = parseInt(params?.id, 10);
   const post = await getPost(postId);
-  res.setHeader('Cache-Control', 's-maxage=59, stale-while-revalidate=599')
+  res.setHeader("Cache-Control", "s-maxage=59, stale-while-revalidate=599");
   return {
     props: {
       post,

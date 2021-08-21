@@ -8,8 +8,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Post>
 ) {
-  if (typeof req.query.id !== 'string') {
-    throw new Error('A single post id is must be given')
+  if (typeof req.query.id !== "string") {
+    throw new Error("A single post id is must be given");
   }
   const postId = parseInt(req.query.id, 10);
   console.log("/api/posts/[id]", postId);
