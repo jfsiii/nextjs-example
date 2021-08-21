@@ -18,13 +18,14 @@ export async function getServerSideProps(
     throw new Error('A single post id is must be given')
   }
   const postId = parseInt(context.params?.id, 10);
-  
+
   const post = await getPost(postId);
 
   return {
     props: {
       post,
     }, // will be passed to the page component as props
+    revalidate: false
   };
 }
 
