@@ -1,4 +1,4 @@
-import type { GetStaticPropsContext, GetStaticPropsResult } from "next";
+import type { GetStaticPropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
@@ -13,7 +13,7 @@ interface PostProps {
 
 export async function getServerSideProps(
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<PostProps>> {
+): Promise<GetServerSidePropsResult<PostProps>> {
   if (typeof context.params?.id !== 'string') {
     throw new Error('A single post id is must be given')
   }
